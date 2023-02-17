@@ -1,34 +1,32 @@
 ﻿
 
 #include <iostream>
-#include "Header.h" // Пр р 13.4
 
 
 using namespace std;
 
+
+void CoutNumber(int N,int j )
+{
+	for (int i = j; i < N + 1; i+=2)
+	{
+
+		cout << i<<"\n";
+
+	}
+
+}
+
+
 int main()
 {
-    // Пр р 13.4
-
-    int x = 2, y = 3, z = 0;
-    z = Qutro(x, y);
-
-    cout << "Pr r 13.4\n";
-    cout << "x=2 y=3\n";
-    cout << "x^2+2xy+y^2=" << z << "\n";
-
-    //Пр р 14.4
-
-    string str = "Hello World!";
-    char str1;
-    cout << "Pr r 14.4\n";
-    cout << str << "\n";
-    cout << str.length() << "\n";
-    str1 = str[0];
-    cout << str1 << "\n";
-    str1 = str[str.length() - 1];
-    cout << str1 << "\n";
-
+	setlocale(LC_ALL, "Russian");
+	const int N = 10;
+	cout << "Вывод четных чисел\n";
+	CoutNumber(N,0);
+	cout << "Вывод нечетных чисел\n";
+	CoutNumber(N, 1);
+	
 
 }
 
