@@ -17,6 +17,7 @@ int main()
 	time_t t = time(NULL);
 	localtime_s(&buf, &t);
 	const int N = 5;
+	int sum_str = 0;
 	setlocale(LC_ALL, "Russian");
 	
 	int arr[N][N];
@@ -37,7 +38,11 @@ int main()
 
 	for (int j = 0; j < N; j++)
 	{
-		cout << arr[buf.tm_mday%5][j] << "  ";
+		cout << arr[buf.tm_mday%N][j] << "  ";
+		sum_str += arr[buf.tm_mday % N][j];
 	}
+	cout <<"\n" << sum_str << "\n";
+
+
 
 }
