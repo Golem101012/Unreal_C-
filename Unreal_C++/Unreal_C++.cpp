@@ -6,72 +6,108 @@
 using namespace std;
 
 
+class MyPlayer{
+private:	
+	string PlayerName;
 
-class Vec {
-private:
-
-    double x;
-    double y;
-    double z;
+	int Score;
 
 public:
+	MyPlayer() : PlayerName("NULL"), Score(0)
+	{
 
-    Vec() : x(0), y(0), z(0)
-    {
+	}
 
-    }
+	MyPlayer(string newName, int newScore) : PlayerName(newName), Score(newScore)
+	{
 
-    Vec(double newX, double newY, double newZ) : x(newX), y(newY), z(newZ)
-    {
+	}
 
-    }
+	void SetName(string newName)
+	{
+		PlayerName = newName;
+	}
 
-    double GetX()
-    {
-        return x;
-    }
+	void SetScore(int newScore)
+	{
+		Score = newScore;
+	}
 
-    double GetY()
-    {
-        return y;
-    }
+	string GetName() 
+	{
+		return PlayerName;
+	}
 
-    double GetZ()
-    {
-        return z;
-    }
-    void SetX(double newX)
-    {
-        x = newX;
-    }
+	int GetScore() 
+	{
+		return Score;
+	}
 
-    void SetY(double newY)
-    {
-        y = newY;
-    }
-    void SetZ(double newZ)
-    {
-        z = newZ;
-    }
-
-
-    void ShowVector()
-    {
-        cout << "\n" << x << " " << y << " " << z;
-    }
-
-    double  LenghtVector()
-    {
-        return sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2));
-    }
+	void Show()
+	{
+		cout << "Имя " << PlayerName << " Кол-во очков " << Score;
+	}
 
 };
 
+
+void Show(MyPlayer *arr, int x)
+{
+		for (int i = 0; i < x; i++)
+		{
+
+		  arr[i].Show();
+		  cout << "\n";
+
+	    }
+}
+
+
+
+
+
 int main()
 {
-    Vec temp(2, 3, 4);
-    temp.ShowVector();
-    cout << "\n" << temp.LenghtVector();
+	setlocale(LC_ALL, "ru");
+	int x,nSCORE;
+	string sNAME;
+
+	cout << "Кол-во игроков\n";
+	cin >> x;
+	MyPlayer *arr = new MyPlayer[x];
+
+	for (int i = 0; i < x; i++)
+	{
+		cout << "Имя игрока\n";
+		cin >> sNAME;
+		arr[i].SetName(sNAME);
+		cout << "Кол-во очков\n";
+		cin >> nSCORE;
+		arr[i].SetScore(nSCORE);
+	}
+
+	cout << "\n";
+
+	Show(arr,x);
+
+	
+	for (int i = 0; i < x; i++) 
+	{
 
 
+
+		for (int j = 0; j < x - 1; j++)
+		{
+			if (arr[j].GetScore() < arr[j + 1].GetScore())
+			{
+				swap(arr[j], arr[j+1]);
+			}
+
+		}
+	}
+
+	Show(arr, x);
+	
 }
+
+
