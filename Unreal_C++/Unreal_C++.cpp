@@ -108,6 +108,9 @@ int main()
 
 	Show(arr, x);
 	
+	delete[] arr;
+
+
 }
 
 
